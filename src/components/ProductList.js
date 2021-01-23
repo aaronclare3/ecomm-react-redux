@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import ProductItem from './ProductItem';
-import {getProducts, clearProducts} from '../redux/Actions';
+import {getProducts, clearProducts} from '../redux/Actions/ProductActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
