@@ -1,9 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 
-
-
-
 const ProductItem = ({item}) => {
     const [detailsOpen, setDetailsOpen] = useState(false);
 

@@ -1,16 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// Components
+import CartList from '../components/CartList';
 
 const CartScreen = () => {  
-    const cart = useSelector(state => state.cart)
-    const {cartItems} = cart; 
-
-    const cartList = cartItems.map(item => {
-        return <h1>{item.title}</h1>
-    })
     return (
         <div>
-            {cartList}
+            <CartList />
         </div>
     )
 }

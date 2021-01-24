@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import {clearProduct, getProduct} from '../redux/Actions/ProductActions';
-import {addToCart} from '../redux/Actions/CartActions';
 import {Link} from 'react-router-dom';
+// Actions
+import {addToCart} from '../redux/Actions/CartActions';
+import {clearProduct, getProduct} from '../redux/Actions/ProductActions';
+
 
 const ProductScreen = ({match}) => {
     const productDetails = useSelector(state => state.getProduct)
@@ -27,13 +29,16 @@ const ProductScreen = ({match}) => {
             {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : 
                 <>
                 <Link to="/">Home</Link>
+                <hr/>
+                <Link to="/cart">Cart</Link>
+
                 <h4>{product.title}</h4>
                 <img style={{width: '50%'}} src={product.image} alt=""/>
                 <p>{product.description}</p>
                 <button onClick={() => addProductToCart(product)}>Add to your Cart!</button>
                 </>
                 
-                }
+            }
             
         </div>
     )

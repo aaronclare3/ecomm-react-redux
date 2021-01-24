@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 // Screens
 import ProductScreen from '../screens/ProductScreen'
 import HomeScreen from '../screens/HomeScreen';
