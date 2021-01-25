@@ -4,12 +4,12 @@ import {useSelector} from 'react-redux'
 import CartItem from './CartItem'
 
 
-const CartList = () => {
+const CartList = ({removeItemFromCart}) => {
     const cart = useSelector(state => state.cart)
     const {cartItems} = cart; 
 
     const renderCartList = cartItems.map(item => {
-        return <CartItem key={item.id} item={item}/>
+        return <CartItem key={item.id} item={item} removeItemFromCart={removeItemFromCart}/>
     })
 
     return (
