@@ -6,13 +6,13 @@ import {getProducts, clearProducts} from '../redux/Actions/ProductActions';
 import ProductItem from './ProductItem';
 
 const ProductList = () => {
-    const [sortedList, setSortedList] = useState('');
-    const [filteredList, setFilteredList] = useState([]);
-    const [listActive, setListActive] = useState('');
+    const [sortedListType, setSortedListType] = useState('');
     const [userSearchFilter, setUserSearchFilter] = useState('');
-
+    const [filteredList, setFilteredList] = useState([]);
+    
     const allProducts = useSelector(state => state.getProducts);
     const {loading, products, error} = allProducts;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,7 +22,6 @@ const ProductList = () => {
     }, [dispatch])
 
     const filterHandler = inputVal => {
-        setListActive("filter");
         setUserSearchFilter(inputVal);
         const updatedList = products.filter(item => {
             // Can also use .startsWith here if you want
@@ -31,53 +30,61 @@ const ProductList = () => {
         setFilteredList(updatedList);
     }
 
-    const checkListSorted = (sortedList, listActive) => {
-        if(listActive === ""){
+    const checkWhichList = (sortedListType, products, userSearchFilter, filteredList) => {
+        // Neither Search Filter nor Sort applied, display whole entire list
+        if(sortedListType === "" && userSearchFilter === ""){
             return products.map(item => {
                 return <ProductItem item={item} key={item.id} />
             });
-        }else if(listActive === "sorted"){
+        // If Sort applied...   
+        }else if(sortedListType !== ""){
             let sortedProducts = [];
-            if(sortedList === "asc"){
-                sortedProducts = products.sort((a,b) => a.title.localeCompare(b.title))
-            }else if(sortedList === "desc"){
-                sortedProducts = products.sort((a,b) => b.title.localeCompare(a.title))
-            }else if(sortedList === "price-low-high"){
-                sortedProducts = products.sort((a,b) => a.price-b.price)
-            }else if(sortedList === "price-high-low"){
-                sortedProducts = products.sort((a,b) => b.price-a.price)
+            let listToSort;
+            // but no search filter, display whole list sorted
+            if(userSearchFilter === ""){
+                listToSort = products
+            // with search filter, display filtered list sorted
+            }else{
+                listToSort = filteredList
+            }
+            if(sortedListType === "asc"){
+                sortedProducts = listToSort.sort((a,b) => a.title.localeCompare(b.title))
+            }else if(sortedListType === "desc"){
+                sortedProducts = listToSort.sort((a,b) => b.title.localeCompare(a.title))
+            }else if(sortedListType === "price-low-high"){
+                sortedProducts = listToSort.sort((a,b) => a.price-b.price)
+            }else if(sortedListType === "price-high-low"){
+                sortedProducts = listToSort.sort((a,b) => b.price-a.price)
             }
             return sortedProducts.map(item => {
                 return <ProductItem item={item} key={item.id} />
             });
-        }else if(listActive === "filter"){
+        // Search Filter applied, but no sort, display filtered list unsorted
+        }else if(userSearchFilter !== "" && sortedListType === ""){
             return filteredList.map(item => {
                 return <ProductItem item={item} key={item.id} />
             });
         }
     }
 
-    const sortedHandler = (sortedType) => {
-        setListActive("sorted");
-        setSortedList(sortedType);
-    }
-
     return (
         <div>
             <div>
+                Price below $50
+            </div>
+            <div>
                 <div><span>Filter List</span></div>
                 <div><input type="text" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/></div>
-
             </div>
             <div>
                 <div><span>Sort List </span></div>
-                <div><span onClick={() => sortedHandler("asc")}>A-Z </span></div>
-                <div><span onClick={() => sortedHandler("desc")}>Z-A </span></div>
-                <div><span onClick={() => sortedHandler("price-low-high")}>Price: Low to High </span></div>
-                <div><span onClick={() => sortedHandler("price-high-low")}>Price: High to Low </span></div>
+                <div><span onClick={() => setSortedListType("asc")}>A-Z </span></div>
+                <div><span onClick={() => setSortedListType("desc")}>Z-A </span></div>
+                <div><span onClick={() => setSortedListType("price-low-high")}>Price: Low to High </span></div>
+                <div><span onClick={() => setSortedListType("price-high-low")}>Price: High to Low </span></div>
             </div>
             <div>
-                {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkListSorted(sortedList, listActive)}
+                {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkWhichList(sortedListType, products, userSearchFilter, filteredList)}
             </div>
         </div>
     )
