@@ -6,7 +6,7 @@ export const getProducts = () => async (dispatch, getState) => {
 
         dispatch({type: GET_PRODUCTS_REQUEST})
 
-        const {data} = await axios.get("https://fakestoreapi.com/products");
+        const {data} = await axios.get('/api/products');
 
         dispatch({
             type: GET_PRODUCTS_SUCCESS,
@@ -25,7 +25,7 @@ export const getProduct = (productId) => async (dispatch, getState) => {
     try {
         dispatch({type: GET_PRODUCT_REQUEST})
 
-        const {data} = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+        const {data} = await axios.get(`/api/products/${productId}`);
         dispatch({
             type: GET_PRODUCT_SUCCESS,
             payload: data

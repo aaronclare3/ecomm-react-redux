@@ -11,7 +11,7 @@ const ProductItem = ({item}) => {
                 </h3>
                 <p>{item.description}</p>
                 <p>${item.price}</p>
-                <Link to={`product/${item.id}`}>See Product Details</Link>
+                <Link to={`product/${item._id}`}>See Product Details</Link>
             </div>
         </div>
     )

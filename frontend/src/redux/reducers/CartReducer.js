@@ -4,8 +4,19 @@ export const cartReducer = (state={cartItems: []}, action) => {
         case "ADD_TO_CART":
             const item = action.payload;
 
-            const itemAlreadyInCart = state.cartItems.find(product => product.id === item.id)
-            return itemAlreadyInCart ? state : {...state, cartItems: [...state.cartItems, action.payload]}
+            const itemExists = state.cartItems.find(x => x.id === item.id)
+
+            if(itemExists) {
+                return {
+                    ...state,
+                    cartItems: state.cartItems.map(x => x.id === itemExists.id ? item : x)
+                }
+            } else {
+                return {
+                    ...state,
+                    cartItems: [...state.cartItems, item]
+                }
+            }
     
         case "REMOVE_FROM_CART":
             const cartWithoutItem = state.cartItems.filter(item => item.id !== action.payload)

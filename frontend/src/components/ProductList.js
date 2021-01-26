@@ -66,7 +66,7 @@ const ProductList = () => {
             currList = filteredList;
         }
         return currList.map(item => {
-            return <ProductItem item={item} key={item.id} />
+            return <ProductItem item={item} key={item._id} />
         });
     }
 

@@ -21,7 +21,6 @@ const ProductScreen = ({match}) => {
 
     const addProductToCart = product => {
         dispatch(addToCart(product));
-        console.log("hi")
     }
     
     return (
