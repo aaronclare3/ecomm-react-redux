@@ -30,48 +30,48 @@ const ProductList = () => {
         setFilteredList(updatedList);
     }
 
-    const checkWhichList = (sortedListType, products, userSearchFilter, filteredList) => {
+    const checkWhichList = (sortedListType, userSearchFilter, filteredList) => {
+        let currList = products;
         // Neither Search Filter nor Sort applied, display whole entire list
         if(sortedListType === "" && userSearchFilter === ""){
-            return products.map(item => {
-                return <ProductItem item={item} key={item.id} />
-            });
+            currList = products;
         // If Sort applied...   
         }else if(sortedListType !== ""){
-            let sortedProducts = [];
             let listToSort;
             // but no search filter, display whole list sorted
             if(userSearchFilter === ""){
-                listToSort = products
+                listToSort = products;
             // with search filter, display filtered list sorted
-            }else{
+            }else {
                 listToSort = filteredList
             }
-            if(sortedListType === "asc"){
-                sortedProducts = listToSort.sort((a,b) => a.title.localeCompare(b.title))
-            }else if(sortedListType === "desc"){
-                sortedProducts = listToSort.sort((a,b) => b.title.localeCompare(a.title))
-            }else if(sortedListType === "price-low-high"){
-                sortedProducts = listToSort.sort((a,b) => a.price-b.price)
-            }else if(sortedListType === "price-high-low"){
-                sortedProducts = listToSort.sort((a,b) => b.price-a.price)
+            switch (sortedListType) {
+                case "asc":
+                    currList = listToSort.sort((a,b) => a.title.localeCompare(b.title));
+                    break;
+                case "desc":
+                    currList = listToSort.sort((a,b) => b.title.localeCompare(a.title));
+                    break;
+                case "price-low-high":
+                    currList = listToSort.sort((a,b) => a.price-b.price);
+                    break;
+                case "price-high-low":
+                    currList = listToSort.sort((a,b) => b.price-a.price);
+                    break;     
+                default:
+                    currList = products;
             }
-            return sortedProducts.map(item => {
-                return <ProductItem item={item} key={item.id} />
-            });
         // Search Filter applied, but no sort, display filtered list unsorted
         }else if(userSearchFilter !== "" && sortedListType === ""){
-            return filteredList.map(item => {
-                return <ProductItem item={item} key={item.id} />
-            });
+            currList = filteredList;
         }
+        return currList.map(item => {
+            return <ProductItem item={item} key={item.id} />
+        });
     }
 
     return (
         <div>
-            <div>
-                Price below $50
-            </div>
             <div>
                 <div><span>Filter List</span></div>
                 <div><input type="text" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/></div>
@@ -84,7 +84,7 @@ const ProductList = () => {
                 <div><span onClick={() => setSortedListType("price-high-low")}>Price: High to Low </span></div>
             </div>
             <div>
-                {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkWhichList(sortedListType, products, userSearchFilter, filteredList)}
+                {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkWhichList(sortedListType, userSearchFilter, filteredList)}
             </div>
         </div>
     )
