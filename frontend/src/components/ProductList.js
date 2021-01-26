@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './ProductList.css';
 // Actions
 import {getProducts, clearProducts} from '../redux/Actions/ProductActions';
 // Components
@@ -76,15 +77,17 @@ const ProductList = () => {
                 <div><span>Filter List</span></div>
                 <div><input type="text" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/></div>
             </div>
-            <div>
-                <div><span>Sort List </span></div>
-                <div><span onClick={() => setSortedListType("asc")}>A-Z </span></div>
-                <div><span onClick={() => setSortedListType("desc")}>Z-A </span></div>
-                <div><span onClick={() => setSortedListType("price-low-high")}>Price: Low to High </span></div>
-                <div><span onClick={() => setSortedListType("price-high-low")}>Price: High to Low </span></div>
-            </div>
-            <div>
-                {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkWhichList(sortedListType, userSearchFilter, filteredList)}
+            <div className="grid-wrapper">
+                <div className="filter">
+                    <div><span>Sort List </span></div>
+                    <div><span onClick={() => setSortedListType("asc")}>A-Z </span></div>
+                    <div><span onClick={() => setSortedListType("desc")}>Z-A </span></div>
+                    <div><span onClick={() => setSortedListType("price-low-high")}>Price: Low to High </span></div>
+                    <div><span onClick={() => setSortedListType("price-high-low")}>Price: High to Low </span></div>
+                </div>
+                <div className="product-wrapper">
+                    {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : checkWhichList(sortedListType, userSearchFilter, filteredList)}
+                </div>
             </div>
         </div>
     )
