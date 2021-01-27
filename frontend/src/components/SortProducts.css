@@ -3,6 +3,11 @@
     margin: 10px 0px;
 }
 
+.sorts-list > div > span {
+    border-radius: 10px;
+    padding: 2px 5px;
+}
+
 .sorts-list > div:hover:not(:first-child) span {
     background: black;
     color: white;
