@@ -3,6 +3,10 @@
     color: grey;
     border: .5px solid rgba(128, 128, 128, 0.3);
     border-radius: 3px;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+
 }
 
 .product-wrapper .card:hover {
@@ -30,7 +34,7 @@
     margin: 3px 0px;
     color: black;
     margin-left: 10px;
-
+  
     /* text-align: center; */
 }
 

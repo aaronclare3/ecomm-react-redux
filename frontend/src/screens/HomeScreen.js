@@ -37,6 +37,7 @@ const HomeScreen = () => {
         setSortedType(sortType)
     }
 
+    // Takes in sort type (if applied) and filtered List (if the user has searched) and returns the list to give to ProductList
     const checkWhichList = (sortedType, filteredList) => {
         let currList = products;
         // Neither Search Filter nor Sort applied, display whole entire list

@@ -8,6 +8,24 @@
     grid-auto-rows: minmax(min-content, max-content);
 }
 
+@media (max-width:1430px) {
+    .product-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width:1160px) {
+    .product-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:750px) {
+    .product-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 
 
