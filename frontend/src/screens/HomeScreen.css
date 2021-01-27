@@ -1,0 +1,8 @@
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 1em;
+    grid-auto-rows: minmax(700px, auto);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10px;
+}

@@ -8,29 +8,25 @@
     grid-auto-rows: minmax(min-content, max-content);
 }
 
-.grid-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 1em;
-    grid-auto-rows: minmax(700px, auto);
-    /* text-align: center; */
-    font-family: 'Courier New', Courier, monospace;
-    margin: 20px;
+@media (max-width:1430px) {
+    .product-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.sorts-list > div {
-    cursor: pointer;
+@media (max-width:1160px) {
+    .product-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.filter-active {
-    background: rgba(128, 128, 128, 0.255);
+@media (max-width:750px) {
+    .product-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
-.sorts-list > div:hover:not(:first-child) span {
-    background: black;
-    color: white;
-}
 
-.sorts-list > div:first-child span {
-    font-weight: bold;
-}
+
+
+

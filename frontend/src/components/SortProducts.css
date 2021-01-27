@@ -1,0 +1,25 @@
+.sorts-list > div {
+    cursor: pointer;
+    margin: 10px 0px;
+}
+
+.sorts-list > div:hover:not(:first-child) span {
+    background: black;
+    color: white;
+}
+
+.sorts-list > div:first-child span {
+    font-weight: bold;
+}
+
+
+.filter-active {
+    background: rgba(128, 128, 128, 0.255);
+}
+
+
+@media (max-width:1120px) {
+    .sorts-list > div {
+        font-size: 90%;
+    }
+}
