@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './Searchbar.css'
 
 const Searchbar = ({products, getList}) => {
     const [userSearchFilter, setUserSearchFilter] = useState('');
@@ -14,7 +15,10 @@ const Searchbar = ({products, getList}) => {
 
     return (
         <div>
-            <div><input type="text" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/></div>
+            <div className="search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search Products..." onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/>
+            </div>
         </div>
     )
 }
