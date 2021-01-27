@@ -12,7 +12,7 @@ const Navbar = ({getList, products}) => {
                     </h4>
                 </div>
                 <div></div>
-                <div></div>
+                <div className="end-nav"><i className="fas fa-user"></i></div>
             </div>
             <div className="navbar-white">
                 <Searchbar getList={getList} products={products}/>

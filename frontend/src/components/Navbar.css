@@ -2,30 +2,39 @@
     height: 50px;
     width: 100%;
     padding: 0px;
-    border-bottom: 1px solid black;
 }
 
 .navbar-black {
     height: 40px;
     width: 100%;
-    padding: 0px;
     background: #111111;
     margin-bottom: 20px;
+    padding-top: 7px;
     color: white;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
-    text-align: left;
 }
 
 .navbar-black > div > h4 {
     margin: 0px;
-    padding-top: 7px;
     padding-left: 20px;
     font-size:25px;
     font-family: 'Courier New', Courier, monospace;
+    text-align: left;
 }
 
 .fa-shopping-cart{
     color: white;
     font-size: 20px;
+}
+
+.fa-user{
+    color: white;
+    font-size: 20px;
+}
+
+.end-nav {
+    text-align: end;
+    margin-right: 20px;
+    margin-top: 7px;
 }
