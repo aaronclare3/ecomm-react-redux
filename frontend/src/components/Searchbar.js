@@ -14,11 +14,9 @@ const Searchbar = ({products, getList}) => {
     }
 
     return (
-        <div>
-            <div className="search">
-                <i className="fas fa-search"></i>
-                <input type="text" placeholder="Search" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/>
-            </div>
+        <div className="search">
+            <i className="fas fa-search"></i>
+            <input type="text" placeholder="Search" onChange={e => filterHandler(e.target.value)} value={userSearchFilter}/>
         </div>
     )
 }

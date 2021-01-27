@@ -6,9 +6,9 @@ import './HomeScreen.css';
 import {clearProducts, getProducts} from '../redux/Actions/ProductActions';
 // Components
 import ProductList from '../components/ProductList';
-import Searchbar from '../components/Searchbar';
 import SortProducts from '../components/SortProducts';
 import ProductItem from '../components/ProductItem';
+import Navbar from '../components/Navbar';
 
 
 
@@ -81,7 +81,7 @@ const HomeScreen = () => {
     return (
         <div>
             <div>
-                <Searchbar getList={getFilteredListFromSearch} products={products}/>
+                <Navbar getList={getFilteredListFromSearch} products={products}/>
             </div>
             <div className="grid-wrapper">
                 <SortProducts getType={getSortedTypeFromSort}/>
