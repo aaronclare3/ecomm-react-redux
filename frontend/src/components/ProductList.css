@@ -15,5 +15,22 @@
     grid-auto-rows: minmax(700px, auto);
     /* text-align: center; */
     font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+}
 
+.sorts-list > div {
+    cursor: pointer;
+}
+
+.filter-active {
+    background: rgba(128, 128, 128, 0.255);
+}
+
+.sorts-list > div:hover:not(:first-child) span {
+    background: black;
+    color: white;
+}
+
+.sorts-list > div:first-child span {
+    font-weight: bold;
 }
