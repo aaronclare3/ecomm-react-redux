@@ -1,6 +1,6 @@
 import React from 'react'
 import Searchbar from './Searchbar';
-import './Navbar.css';
+import './styles/Navbar.css';
 
 const Navbar = ({getList, products}) => {
     return (

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './SortProducts.css'
+import './styles/SortProducts.css'
 
 const SortProducts = ({getType}) => {
     const [sortedListType, setSortedListType] = useState('');

@@ -24,10 +24,14 @@ const CartScreen = () => {
     }
 
     return (
-        <div>
-            <CartList removeItemFromCart={removeFromCartHandler}/>
-            <div>Subtotal Price: {calcTotalPrice()}</div>
-            <div>Subtotal Items: {calcTotalItems()}</div>
+        <div className="cartscreen-container">
+            <div className="cartscreen-list">
+                <CartList removeItemFromCart={removeFromCartHandler}/>
+            </div>
+            <div className="cartscreen-checkout">
+                <div>Subtotal Price: {calcTotalPrice()}</div>
+                <div>Subtotal Items: {calcTotalItems()}</div>
+            </div>
         </div>
     )
 }

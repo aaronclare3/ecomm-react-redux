@@ -3,6 +3,15 @@
     margin: 10px 0px;
 }
 
+.sorts-list {
+    border: .5px solid rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+}
+
+.sorts-list > div:first-child {
+    text-align: center;
+}
+
 .sorts-list > div > span {
     border-radius: 10px;
     padding: 2px 5px;
@@ -11,6 +20,10 @@
 .sorts-list > div:hover:not(:first-child) span {
     background: black;
     color: white;
+}
+
+.sorts-list > div:not(:first-child) span {
+    margin-left: 5px;
 }
 
 .sorts-list > div:first-child span {
