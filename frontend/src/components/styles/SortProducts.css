@@ -6,6 +6,7 @@
 .sorts-list {
     border: .5px solid rgba(128, 128, 128, 0.3);
     border-radius: 4px;
+    height: fit-content;
 }
 
 .sorts-list > div:first-child {
