@@ -33,7 +33,7 @@
     height: fit-content;
 }
 
-.details-container button {
+.details-container .product-btn {
     object-fit: cover;
     width: 80%;
     margin-bottom: 5px;
@@ -46,7 +46,7 @@
     align-items: center;
 }
 
-.details-container button:hover {
+.details-container .product-btn:hover {
     border: none;
     transform: scale(1.05);
     transition: ease-out .5s;
@@ -54,6 +54,8 @@
     background: black;
     color: white;
 }
+
+
 
 .details-container > h4 {
     color: black;

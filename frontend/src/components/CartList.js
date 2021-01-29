@@ -15,7 +15,7 @@ const CartList = ({removeItemFromCart}) => {
 
     return (
         <div className="cart-list">
-            {cartItems.length === 0 ? "No items in cart!" : renderCartList}
+            {cartItems.length === 0 ? "" : renderCartList}
         </div>
     )
 }

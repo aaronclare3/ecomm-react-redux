@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './ProductScreen.css'
@@ -8,6 +8,7 @@ import {clearProduct, getProduct} from '../redux/Actions/ProductActions';
 
 
 const ProductScreen = ({match}) => {
+    const [addItemClicked, setAddItemClicked] = useState(false);
     const productDetails = useSelector(state => state.getProduct)
     const {product, error, loading} = productDetails;
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const ProductScreen = ({match}) => {
 
     const addProductToCart = product => {
         dispatch(addToCart(product));
+        setAddItemClicked(prevState => !prevState)
     }
     
     return (
@@ -39,7 +41,8 @@ const ProductScreen = ({match}) => {
                         <h4>{product.title}</h4>
                         <p>{product.description}</p>
                         <p>${product.price}</p>
-                        <button className="center-btn" onClick={() => addProductToCart(product)}>Add to your Cart!</button>
+                        {addItemClicked ? <h4>ADDED!</h4> :
+                        <button className="center-btn product-btn" onClick={() => addProductToCart(product)}>ADD TO CART</button>}
                     </div>
                 </div>
             }
