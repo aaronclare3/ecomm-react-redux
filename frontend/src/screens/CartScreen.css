@@ -1,0 +1,23 @@
+.cart-totals {
+    width: 35%;
+    max-height: 400px;
+    min-height: 200px;
+    margin-right: 20px;
+}
+
+.cart {
+    margin: 40px auto;
+    width: 100%;
+    display: flex;
+}
+
+@media (max-width:1200px){
+    .cart{
+        display: block;
+    }
+
+    .cart-totals {
+        width: 60%;
+        margin: 20px auto;
+    }
+}

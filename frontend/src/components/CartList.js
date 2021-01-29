@@ -1,5 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
+import './styles/CartList.css'
 // Components
 import CartItem from './CartItem'
 
@@ -13,7 +14,7 @@ const CartList = ({removeItemFromCart}) => {
     })
 
     return (
-        <div>
+        <div className="cart-list">
             {cartItems.length === 0 ? "No items in cart!" : renderCartList}
         </div>
     )

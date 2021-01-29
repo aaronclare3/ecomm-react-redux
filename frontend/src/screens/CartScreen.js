@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
+import './CartScreen.css'
 // Components
 import CartList from '../components/CartList';
 //Actions
@@ -25,12 +26,13 @@ const CartScreen = () => {
 
     return (
         <div className="cartscreen-container">
-            <div className="cartscreen-list">
+            <div className="cart">
                 <CartList removeItemFromCart={removeFromCartHandler}/>
-            </div>
-            <div className="cartscreen-checkout">
-                <div>Subtotal Price: {calcTotalPrice()}</div>
-                <div>Subtotal Items: {calcTotalItems()}</div>
+
+                <div className="cart-totals">
+                    <div>Subtotal Price: {calcTotalPrice()}</div>
+                    <div>Subtotal Items: {calcTotalItems()}</div>
+                </div>
             </div>
         </div>
     )
