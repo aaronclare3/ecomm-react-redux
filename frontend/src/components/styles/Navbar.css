@@ -1,40 +1,24 @@
-.navbar-white {
-    height: 50px;
-    width: 100%;
-    padding: 0px;
-}
-
-.navbar-black {
+.navbar {
+    background-color: black;
     height: 40px;
-    width: 100%;
-    background: #111111;
-    margin-bottom: 20px;
-    padding-top: 7px;
+    margin: 0px;
     color: white;
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    display: flex;
 }
 
-.navbar-black > div > h4 {
-    margin: 0px;
-    padding-left: 20px;
-    font-size:25px;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: left;
+.navbar > h1 {
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .fa-shopping-cart{
-    color: white;
-    font-size: 20px;
+    margin-left: 2px;
 }
 
-.fa-user{
-    color: white;
-    font-size: 20px;
+.fa-user-icon{
+    float: right;
 }
 
-.end-nav {
-    text-align: end;
-    margin-right: 20px;
-    margin-top: 7px;
+.fas {
+    font-size: 25px;
 }

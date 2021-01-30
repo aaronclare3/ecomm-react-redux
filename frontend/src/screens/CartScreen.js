@@ -17,6 +17,7 @@ const CartScreen = () => {
         return cartItems.reduce((totPrice, item) => item.price + totPrice, 0)
     }
 
+    // eslint-disable-next-line
     const calcTotalItems = () => {
         return cartItems.length
     }

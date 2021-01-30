@@ -9,6 +9,7 @@ import ProductList from '../components/ProductList';
 import SortProducts from '../components/SortProducts';
 import ProductItem from '../components/ProductItem';
 import Navbar from '../components/Navbar';
+import Searchbar from '../components/Searchbar';
 
 
 
@@ -79,10 +80,9 @@ const HomeScreen = () => {
     }
 
     return (
-        <div>
-            <div>
-                <Navbar getList={getFilteredListFromSearch} products={products}/>
-            </div>
+        <div className="homescreen-container">
+            <Navbar getList={getFilteredListFromSearch} products={products}/>
+            <Searchbar getList={getFilteredListFromSearch} products={products}/>
             <div className="grid-wrapper">
                 <SortProducts getType={getSortedTypeFromSort}/>
                 <ProductList loading={loading} error={error} list={checkWhichList(sortedType, filteredList)}/>
