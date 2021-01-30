@@ -42,9 +42,18 @@ const CartScreen = () => {
                     :
                     <>
                      <div className="cart-totals">
-                        <h4>Subtotal Price: {calcTotalPrice()}</h4>
-                        <h4>Subtotal Items: {calcTotalItems()}</h4>
-                        <button>CHECKOUT</button>
+                         <div>
+                            <div>
+                                <h4>Subtotal Price: ${calcTotalPrice()}</h4>
+                                <h4>Shipping and Handling: $0</h4>
+                                <h4>Estimated Tax: -</h4>
+                                {/* <h4>Subtotal Items: {calcTotalItems()}</h4> */}
+                            </div>
+                            <div>
+                                <h2>Total Price: ${calcTotalPrice()}</h2>
+                            </div>
+                            <button>CHECKOUT</button>
+                         </div>
                     </div>
                     </>
                     }                    

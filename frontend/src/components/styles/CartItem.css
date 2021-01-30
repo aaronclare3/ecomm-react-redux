@@ -14,11 +14,17 @@
     height: 200px;
     border-radius: 5px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .cart-item-details > h1 {
     text-align: center;
     align-content: center;
+    cursor: pointer;
+}
+
+.cart-item-details > p {
+    cursor: pointer;
 }
 
 .cart-item-details {
@@ -69,17 +75,17 @@
     }
 } */
 
-@media (max-width:960px){
+@media (max-width:1000px){
     .cart-item {
         height: 100px;
     }
     .cart-item > img {
         height: 100px;
     }
-    * {
+    /* * {
         padding: 0px;
         margin: 0px;
-    }
+    } */
 
     .cart-item-details {
         width: 100%;
