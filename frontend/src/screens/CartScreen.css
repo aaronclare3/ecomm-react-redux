@@ -90,3 +90,10 @@
         width: 100%;
     }
 }
+
+@media (max-width:500px){
+    .empty-cart > a > button {
+        width: 200px;
+    }
+}
+

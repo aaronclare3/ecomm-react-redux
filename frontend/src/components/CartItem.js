@@ -21,7 +21,7 @@ const CartItem = ({ item, removeItemFromCart }) => {
           <button
             className='center-btn'
             onClick={() => removeItemFromCart(item.id)}>
-            REMOVE FROM CART
+            REMOVE
           </button>
         </div>
       </div>

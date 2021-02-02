@@ -35,7 +35,7 @@ const CartScreen = () => {
             <div className='empty-cart'>
               <h4>Sorry, there are no items in your cart!</h4>
               <Link to='/'>
-                <button>Go back and add some items</button>
+                <button>ADD ITEMS</button>
               </Link>
             </div>
           </>
