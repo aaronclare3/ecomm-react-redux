@@ -1,4 +1,3 @@
-import { get } from "mongoose";
 import React, { useState } from "react";
 import "./styles/Searchbar.css";
 

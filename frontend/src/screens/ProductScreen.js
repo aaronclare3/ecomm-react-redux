@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import "./ProductScreen.css";
 // Actions
 import { addToCart } from "../redux/Actions/CartActions";
 import { clearProduct, getProduct } from "../redux/Actions/ProductActions";
 
+// components
+import Navbar from "../components/Navbar";
+
 const ProductScreen = ({ match }) => {
-  const [addItemClicked, setAddItemClicked] = useState(false);
+  const [itemInCart, setItemInCart] = useState(false);
   const productDetails = useSelector((state) => state.getProduct);
+
   const { product, error, loading } = productDetails;
   const dispatch = useDispatch();
 
@@ -21,15 +24,11 @@ const ProductScreen = ({ match }) => {
 
   const addProductToCart = (product) => {
     dispatch(addToCart(product));
-    setAddItemClicked((prevState) => !prevState);
   };
 
   return (
     <div>
-      <div className='header-links'>
-        <Link to='/'>Home</Link>
-        <Link to='/cart'>Cart</Link>
-      </div>
+      <Navbar />
       {loading ? (
         <h2>Loading...</h2>
       ) : error ? (
@@ -43,12 +42,14 @@ const ProductScreen = ({ match }) => {
             <h4>{product.title}</h4>
             <p>{product.description}</p>
             <p>${product.price}</p>
-            {addItemClicked ? (
+            {itemInCart ? (
               <h4>ADDED!</h4>
             ) : (
               <button
                 className='center-btn product-btn'
-                onClick={() => addProductToCart(product)}>
+                onClick={() => (
+                  addProductToCart(product), setItemInCart(true)
+                )}>
                 ADD TO CART
               </button>
             )}
