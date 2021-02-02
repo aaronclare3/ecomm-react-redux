@@ -107,3 +107,20 @@
     }
 }
 
+
+
+@media (max-width:500px){
+    .cart-item-details > div > h3{
+        display:block;
+        justify-content: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .cart-item-details > div > button{
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        float:none;
+        width: 100%;
+    }
+}
