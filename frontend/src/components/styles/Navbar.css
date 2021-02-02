@@ -8,6 +8,13 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+.cart-amt {
+    color: black;
+    position: absolute;
+    top: -1px;
+    right: 71px;
+}
+
 .navbar > h1 {
     margin: auto;
     display: inline-block;
