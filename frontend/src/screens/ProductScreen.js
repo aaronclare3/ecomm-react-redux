@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import "./ProductScreen.css";
 // Actions
 import { addToCart } from "../redux/Actions/CartActions";
 import { clearProduct, getProduct } from "../redux/Actions/ProductActions";
+
+// components
+import Navbar from "../components/Navbar";
 
 const ProductScreen = ({ match }) => {
   const [addItemClicked, setAddItemClicked] = useState(false);
@@ -26,10 +28,7 @@ const ProductScreen = ({ match }) => {
 
   return (
     <div>
-      <div className='header-links'>
-        <Link to='/'>Home</Link>
-        <Link to='/cart'>Cart</Link>
-      </div>
+      <Navbar screen={product} />
       {loading ? (
         <h2>Loading...</h2>
       ) : error ? (

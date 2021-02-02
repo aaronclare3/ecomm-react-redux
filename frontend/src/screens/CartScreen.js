@@ -4,6 +4,7 @@ import "./CartScreen.css";
 import { Link } from "react-router-dom";
 // Components
 import CartList from "../components/CartList";
+import Navbar from "../components/Navbar";
 //Actions
 import { removeFromCart } from "../redux/Actions/CartActions";
 
@@ -27,6 +28,7 @@ const CartScreen = () => {
 
   return (
     <div className='cartscreen-container'>
+      <Navbar />
       <div className='cart'>
         <CartList removeItemFromCart={removeFromCartHandler} />
 
