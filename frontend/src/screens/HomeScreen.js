@@ -13,6 +13,7 @@ import Searchbar from "../components/Searchbar";
 
 const HomeScreen = () => {
   const [filteredList, setFilteredList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortedType, setSortedType] = useState("");
 
   const allProducts = useSelector((state) => state.getProducts);
@@ -26,9 +27,9 @@ const HomeScreen = () => {
     return () => dispatch(clearProducts());
   }, [dispatch]);
 
-  const getFilteredListFromSearch = (list) => {
-    console.log(list);
+  const getFilteredListFromSearch = (list, search) => {
     setFilteredList(list);
+    setSearchTerm(search);
   };
 
   const getSortedTypeFromSort = (sortType) => {
@@ -37,16 +38,16 @@ const HomeScreen = () => {
   };
 
   // Takes in sort type (if applied) and filtered List (if the user has searched) and returns the list to give to ProductList
-  const checkWhichList = (sortedType, filteredList) => {
+  const checkWhichList = (sortedType, searchTerm) => {
     let currList = products;
     // Neither Search Filter nor Sort applied, display whole entire list
-    if (sortedType === "" && filteredList.length === 0) {
+    if (sortedType === "" && searchTerm === "") {
       currList = products;
       // If Sort applied...
     } else if (sortedType !== "") {
       let listToSort;
       // but no search filter, display whole list sorted
-      if (filteredList.length === 0) {
+      if (searchTerm === "") {
         listToSort = products;
         // with search filter, display filtered list sorted
       } else {
@@ -69,7 +70,7 @@ const HomeScreen = () => {
           currList = products;
       }
       // Search Filter applied, but no sort, display filtered list unsorted
-    } else if (filteredList.length !== 0 && sortedType === "") {
+    } else if (searchTerm !== "" && sortedType === "") {
       currList = filteredList;
     }
     return currList.map((item) => {
@@ -83,11 +84,16 @@ const HomeScreen = () => {
       <Searchbar getList={getFilteredListFromSearch} products={products} />
       <div className='grid-wrapper'>
         <SortProducts getType={getSortedTypeFromSort} />
-        <ProductList
-          loading={loading}
-          error={error}
-          list={checkWhichList(sortedType, filteredList)}
-        />
+        {/* If someone is searching but they can't find any products */}
+        {searchTerm !== "" && filteredList.length === 0 ? (
+          <h1>Oops! Try another search.</h1>
+        ) : (
+          <ProductList
+            loading={loading}
+            error={error}
+            list={checkWhichList(sortedType, searchTerm)}
+          />
+        )}
       </div>
     </div>
   );
