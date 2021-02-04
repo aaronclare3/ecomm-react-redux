@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoutes");
 const path = require("path");
 
 connectDB();
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

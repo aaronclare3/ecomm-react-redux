@@ -7,11 +7,9 @@ import { clearProduct, getProduct } from "../redux/Actions/ProductActions";
 
 // components
 import Navbar from "../components/Navbar";
-import CartItem from "../components/CartItem";
 
 const ProductScreen = ({ match }) => {
   const [qty, setQty] = useState(1);
-  const [itemInCart, setItemInCart] = useState(false);
   const productDetails = useSelector((state) => state.getProduct);
   const cart = useSelector((state) => state.cart.cartItems);
 
@@ -23,6 +21,10 @@ const ProductScreen = ({ match }) => {
 
     return () => dispatch(clearProduct());
   }, [dispatch, match]);
+
+  useEffect(() => {
+    checkItemInCart(cart, product._id);
+  }, [product]);
 
   const addProductToCart = (product) => {
     dispatch(addToCart(product._id, qty));
@@ -72,9 +74,7 @@ const ProductScreen = ({ match }) => {
             ) : (
               <button
                 className='center-btn product-btn'
-                onClick={() => (
-                  addProductToCart(product), console.log(product)
-                )}>
+                onClick={() => addProductToCart(product)}>
                 ADD TO CART
               </button>
             )}
